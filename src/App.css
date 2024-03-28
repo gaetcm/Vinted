@@ -1,0 +1,90 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.offre {
+  margin-top: 30px;
+
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.imageproduit {
+  width: 233px;
+  height: 360px;
+}
+
+article a {
+  text-decoration: none;
+}
+
+article {
+  width: 300px;
+  height: fit-content;
+  margin-bottom: 20px;
+  color: gray;
+}
+
+.avatar {
+  width: 20px;
+  border-radius: 50%;
+}
+
+.bodyoffer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: #ebedee;
+}
+
+.bodyoffer img {
+  width: 400px;
+  height: 600px;
+}
+
+.bodyoffer .ficheproduit {
+  width: 400px;
+  height: 600px;
+  background-color: white;
+}
+
+.offercontainer {
+  padding: 30px;
+  width: 1200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0, 150px;
+}
+
+/* form */
+.formulaire {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.newsletter {
+  display: flex;
+  flex-direction: row;
+}
+form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 420px;
+  height: 610px;
+  border-radius: 10px;
+}
