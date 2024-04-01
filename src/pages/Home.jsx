@@ -3,17 +3,19 @@ import { useEffect, useState } from "react";
 import photo from "../assets/img/download.jpg";
 import axios from "axios";
 import tear from "../assets/img/download.svg";
-import Cookies from "js-cookie";
 
-const Home = () => {
+const Home = ({ search }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  //
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          " https://lereacteur-vinted-api.herokuapp.com/offers/"
+          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}`
         );
+        console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -21,7 +23,7 @@ const Home = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [search]);
   return isLoading ? (
     <p>Loading ...</p>
   ) : (
@@ -38,14 +40,15 @@ const Home = () => {
         <div className="offre">
           {console.log(data.offers)}
           {data.offers.map((elem) => {
-            {
-              console.log(elem.owner);
-            }
+            // {console.log(elem.owner);}
             return (
               <>
-                <Link to={`/offer/${elem._id}`}>
+                <Link
+                  style={{ textDecoration: "none" }}
+                  to={`/offer/${elem._id}`}
+                >
                   <article>
-                    <div>
+                    <div className="avatardiv">
                       <img
                         className="avatar"
                         src={elem.owner.account.avatar?.secure_url}
@@ -59,9 +62,11 @@ const Home = () => {
                         src={elem.product_image?.secure_url}
                         alt="product name"
                       />
-                      <p>{elem.product_price} €</p>
-                      <p>{elem.product_details[1].TAILLE}</p>
-                      <p>{elem.product_details[0].MARQUE}</p>
+                      <div style={{ "margin-top": "10px" }}>
+                        <p style={{ color: "black" }}>{elem.product_price} €</p>
+                        <p>{elem.product_details[1].TAILLE}</p>
+                        <p>{elem.product_details[0].MARQUE}</p>
+                      </div>
                     </div>
                   </article>
                 </Link>

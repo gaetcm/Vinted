@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Pic from "../../assets/img/vinted-logo.png";
 import "../header/Header.css";
 
-const Header = () => {
+const Header = ({ token, search, handleToken, setSearch }) => {
   return (
     <>
       <header>
@@ -13,24 +13,39 @@ const Header = () => {
             </Link>
             <div className="searchbar">
               <input
-                type="search"
+                value={search}
+                type="text"
                 name="search"
                 placeholder="Recherchez des articles"
+                onChange={(event) => {
+                  setSearch(event.target.value);
+                }}
               ></input>
-              <input
-                type="range"
-                id="volume"
-                name="volume"
-                min="0"
-                max="1000"
-              />
             </div>
+
             <div className="buttonsheader">
-              <Link to="/signup">
-                <button>S'inscrire</button>
+              {token ? (
+                <button
+                  id="deco"
+                  onClick={() => {
+                    handleToken(null);
+                  }}
+                >
+                  Se déconnecter
+                </button>
+              ) : (
+                <>
+                  <Link to="/signup">
+                    <button>S'inscrire</button>
+                  </Link>
+                  <Link to="/login">
+                    <button>Se connecter</button>
+                  </Link>
+                </>
+              )}
+              <Link to="/publish">
+                <button className="sellbutton">Vends tes articles</button>
               </Link>
-              <button>Se connecter</button>
-              <button className="sellbutton">Vends tes articles</button>
             </div>
           </div>
         </div>
