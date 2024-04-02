@@ -3,27 +3,36 @@ import { useEffect, useState } from "react";
 import photo from "../assets/img/download.jpg";
 import axios from "axios";
 import tear from "../assets/img/download.svg";
+import Footer from "../components/footer/index";
 
-const Home = ({ search }) => {
+const Home = ({ search, min, max, sort }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   //
+  let order = "";
+  if (sort === true) {
+    order = "price-desc";
+  } else {
+    order = "price-asc";
+  }
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}`
+          ` https://lereacteur-vinted-api.herokuapp.com/offers?sort=${order}&title=${search}&priceMin=${min}&priceMax=${max}`
         );
-        console.log(response.data);
+
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
         console.log(error);
       }
     };
+
     fetchData();
-  }, [search]);
+  }, [search, min, max, sort]);
+
   return isLoading ? (
     <p>Loading ...</p>
   ) : (
@@ -49,11 +58,13 @@ const Home = ({ search }) => {
                 >
                   <article>
                     <div className="avatardiv">
-                      <img
-                        className="avatar"
-                        src={elem.owner.account.avatar?.secure_url}
-                        alt="user photo"
-                      />
+                      {elem.owner.account.avatar?.secure_url ? (
+                        <img
+                          className="avatar"
+                          src={elem.owner.account.avatar?.secure_url}
+                          alt="user photo"
+                        />
+                      ) : null}
                       <p>{elem.owner.account.username}</p>
                     </div>
                     <div>
@@ -75,6 +86,7 @@ const Home = ({ search }) => {
           })}
         </div>
       </div>
+      <Footer />
     </>
   );
 };

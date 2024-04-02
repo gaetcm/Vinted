@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-// import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Publish = ({ token }) => {
   const [title, setTitle] = useState("");
@@ -13,11 +13,10 @@ const Publish = ({ token }) => {
   const [color, setColor] = useState("");
   const [picture, setPicture] = useState();
 
-  //   const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     try {
       const formData = new FormData();
       formData.append("title", title);
@@ -30,9 +29,9 @@ const Publish = ({ token }) => {
       formData.append("color", color);
       formData.append("price", price);
 
-      for (var key of formData.entries()) {
-        console.log(key[0] + ", " + key[1]);
-      }
+      //   for (var key of formData.entries()) {
+      //     console.log(key[0] + ", " + key[1]);
+      //   }
 
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
@@ -45,10 +44,14 @@ const Publish = ({ token }) => {
         }
       );
       console.log(response.data);
+      if (response.data._id) {
+        navigate("/offers/${response.data._id");
+      }
     } catch (error) {
-      console.log(error.response.data);
+      console.log(error);
     }
   };
+
   return (
     <div className="bodyinfo">
       <div className="container">
@@ -57,11 +60,15 @@ const Publish = ({ token }) => {
           <form className="formsell" onSubmit={handleSubmit}>
             <div className="inputtext">
               <div className="boutton2">
+                <label htmlFor="picture-input" style={{ color: "#2db0ba" }}>
+                  + Ajoute une photo
+                </label>
                 <input
-                  // multiple // Pour sélectionner plusieurs fichiers
+                  style={{ display: "none" }}
+                  id="picture-input"
                   type="file"
-                  nom="picture"
                   onChange={(event) => {
+                    console.log(event);
                     setPicture(event.target.files[0]);
                   }}
                 />

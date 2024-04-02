@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Offer = () => {
   const [data, setData] = useState([]);
@@ -14,6 +15,7 @@ const Offer = () => {
         );
         setData(response.data);
         setIsLoading(false);
+        // navigate("/payment", { state: { title: "Toto", price: "12" } });
       } catch (error) {
         console.log(error);
       }
@@ -61,7 +63,12 @@ const Offer = () => {
               </div>
             </div>
             <div id="buttonacheter">
-              <button>Acheter</button>
+              <Link
+                to="/payment"
+                state={{ price: data.product_price, title: data.product_name }}
+              >
+                Acheter
+              </Link>
             </div>
           </div>
         </div>
