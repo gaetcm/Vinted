@@ -52,17 +52,19 @@ const Offer = () => {
               <span style={{ color: "black" }}>{data.product_name}</span>
               <span>{data.product_description}</span>
               <div id="infoaccount">
-                <img
-                  id="avatar2"
-                  style={{ width: "60px", height: "60px" }}
-                  src={data.owner.account.avatar?.secure_url}
-                />
-                <span style={{ color: "black" }}>
+                {data.owner.account.avatar?.secure_url ? (
+                  <img
+                    id="avatar2"
+                    style={{ width: "60px", height: "60px" }}
+                    src={data.owner.account.avatar?.secure_url}
+                  />
+                ) : null}
+                <span style={{ color: "black", fontWeight: "bold" }}>
                   {data.owner.account.username}
                 </span>
               </div>
             </div>
-            <div id="buttonacheter">
+            <div className="buttonacheter">
               <Link
                 to="/payment"
                 state={{ price: data.product_price, title: data.product_name }}

@@ -51,48 +51,69 @@ const Header = ({
                 ></input>
               </div>
               <div className="range">
-                <p style={{ fontSize: "15px", color: "black" }}>
+                <p style={{ fontSize: "12px", color: "black" }}>
                   Trier par prix
                 </p>
                 <div>
                   <input id="checktop" type="checkbox" onClick={handleSort} />
                 </div>
-
-                <Range
-                  step={1}
-                  min={0}
-                  max={1000}
-                  values={[min, max]}
-                  onChange={(values) => handlePriceChange(values)}
-                  renderTrack={({ props, children }) => (
-                    <div
-                      {...props}
+                <div className="test1">
+                  <Range
+                    step={1}
+                    min={0}
+                    max={1000}
+                    values={[min, max]}
+                    onChange={(values) => handlePriceChange(values)}
+                    renderTrack={({ props, children }) => (
+                      <div
+                        {...props}
+                        style={{
+                          ...props.style,
+                          height: "6px",
+                          width: "250px",
+                          backgroundColor: "#ccc",
+                        }}
+                      >
+                        {children}
+                      </div>
+                    )}
+                    renderThumb={({ props }) => (
+                      <div
+                        {...props}
+                        style={{
+                          ...props.style,
+                          height: "16px",
+                          width: "16px",
+                          backgroundColor: "#2db0ba",
+                          borderRadius: "50%",
+                          outline: "none",
+                        }}
+                      />
+                    )}
+                  />
+                  <div style={{ fontSize: "12px", color: "black" }}>
+                    prix min :{" "}
+                    <span
                       style={{
-                        ...props.style,
-                        height: "6px",
-                        width: "250px",
-                        backgroundColor: "#ccc",
+                        fontSize: "15px",
+                        color: "#2db0ba",
+                        fontWeight: "bold",
                       }}
                     >
-                      {children}
-                    </div>
-                  )}
-                  renderThumb={({ props }) => (
-                    <div
-                      {...props}
+                      {min}
+                    </span>
+                    {"  "}
+                    prix max :{" "}
+                    <span
                       style={{
-                        ...props.style,
-                        height: "16px",
-                        width: "16px",
-                        backgroundColor: "#2db0ba",
-                        borderRadius: "50%",
-                        outline: "none",
+                        fontSize: "15px",
+                        color: "#2db0ba",
+                        fontWeight: "bold",
                       }}
-                    />
-                  )}
-                />
-                <div>
-                  {min} - {max}
+                    >
+                      {max}
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>

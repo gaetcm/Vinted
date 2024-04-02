@@ -9,7 +9,7 @@ import Offer from "./pages/Offer";
 import Signup from "./pages/Signup.jsx";
 import Login from "./pages/Login.jsx";
 import Header from "./components/header/index.jsx";
-
+import NotFound from "./pages/NotFound.jsx";
 import Publish from "./pages/Publish.jsx";
 import Payment from "./pages/Payment.jsx";
 
@@ -64,8 +64,8 @@ function App() {
         <Route path="/signup" element={<Signup handleToken={handleToken} />} />
         <Route path="/login" element={<Login handleToken={handleToken} />} />
         <Route path="/publish" element={<Publish token={token} />} />
-        <Route path="/payment" element={<Payment />} />
-        <Route path="*" element={<p>Error 404</p>} />
+        <Route path="/payment" element={token ? <Payment /> : <NotFound />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );

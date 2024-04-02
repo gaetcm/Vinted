@@ -43,9 +43,9 @@ const Publish = ({ token }) => {
           },
         }
       );
-      console.log(response.data);
+      // console.log(response.data);
       if (response.data._id) {
-        navigate("/offers/${response.data._id");
+        navigate(`/offers/${response.data._id}`);
       }
     } catch (error) {
       console.log(error);
@@ -60,6 +60,13 @@ const Publish = ({ token }) => {
           <form className="formsell" onSubmit={handleSubmit}>
             <div className="inputtext">
               <div className="boutton2">
+                {picture && (
+                  <img
+                    className="imgfiche"
+                    src={URL.createObjectURL(picture)}
+                    alt="produit"
+                  />
+                )}
                 <label htmlFor="picture-input" style={{ color: "#2db0ba" }}>
                   + Ajoute une photo
                 </label>

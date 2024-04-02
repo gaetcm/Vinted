@@ -17,38 +17,41 @@ function Payment() {
 
   const options = {
     mode: "payment",
-    amount: Number((Math.abs(price) * 100).toFixed(0)),
+    amount: Number((Math.abs(total) * 100).toFixed(0)),
     currency: "eur",
   };
   return (
-    <div className="container">
-      <div className="paymentbox">
-        <div className="flexcheck">
-          <div className="frais">
-            <div className="frais1">
-              <span>Commande</span>
-              <span>Frais de protection acheteurs</span>
-              <span>Frais de port</span>
+    <div className="fondgris">
+      <div className="container">
+        <div className="paymentbox">
+          <div className="flexcheck">
+            <div className="frais">
+              <div className="frais1">
+                <span>Commande</span>
+                <span>Frais de protection acheteurs</span>
+                <span>Frais de port</span>
+              </div>
+              <div className="frais1">
+                <span>{price}€</span>
+                <span>{frais1}€</span>
+                <span>{frais2}€</span>
+              </div>
             </div>
-            <div className="frais1">
-              <span>{price}€</span>
-              <span>{frais1}€</span>
-              <span>{frais2}€</span>
+            <div id="divider2"></div>
+            <div className="frais margintop">
+              <span>Total</span>
+              <span>{total}</span>
             </div>
-          </div>
-          <div id="divider2"></div>
-          <div className="frais margintop">
-            <span>Total</span>
-            <span>{total}</span>
-          </div>
-          <p className="margintop">
-            Il ne vous reste plus qu'un étape pour vous offrir {title}. Vous
-            allez payer {total} € (frais de protection et frais de port inclus).
-          </p>
-          <div>
-            <Elements stripe={stripePromise} options={options}>
-              <CheckoutForm total={total} title={title} price={price} />
-            </Elements>
+            <p className="margintop">
+              Il ne vous reste plus qu'un étape pour vous offrir {title}. Vous
+              allez payer {total} € (frais de protection et frais de port
+              inclus).
+            </p>
+            <div>
+              <Elements stripe={stripePromise} options={options}>
+                <CheckoutForm total={total} title={title} price={price} />
+              </Elements>
+            </div>
           </div>
         </div>
       </div>

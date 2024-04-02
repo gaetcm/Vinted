@@ -92,6 +92,7 @@ article p {
 }
 
 .bodyoffer img {
+  object-fit: cover;
   width: 400px;
   height: 600px;
 }
@@ -168,7 +169,7 @@ article p {
   border-radius: 50%;
 }
 
-#buttonacheter {
+.buttonacheter {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -176,7 +177,8 @@ article p {
   margin-top: 40px;
 }
 
-#buttonacheter button {
+.buttonacheter > a {
+  border-radius: 5px;
   width: 80%;
   height: 40px;
   display: flex;
@@ -185,6 +187,7 @@ article p {
   background-color: #2db0ba;
   color: white;
   font-size: 17px;
+  text-decoration: none;
 }
 
 /* form */
@@ -273,7 +276,7 @@ article p {
 .boutton2 {
   margin-bottom: 20px;
   width: 100%;
-  height: 250px;
+  height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -291,6 +294,13 @@ article p {
 }
 .bodyinfo label:hover {
   cursor: pointer;
+}
+
+.imgfiche {
+  border: #2db0ba 3px solid;
+  border-radius: 5px;
+  width: 250px;
+  margin-right: 20px;
 }
 
 .form-info {
@@ -343,6 +353,15 @@ article p {
 
 /* payment */
 
+.fondgris {
+  background-color: #ebedee;
+  height: 650px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .flexxx {
   margin-bottom: 20px;
   width: 100%;
@@ -353,12 +372,15 @@ article p {
 }
 
 .paymentbox {
+  background-color: white;
   display: flex;
   flex-direction: column;
   width: 100%;
   height: fit-content;
+  padding: 20px;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
 }
 .flexcheck {
   width: 600px;
@@ -395,6 +417,20 @@ article p {
   background-color: #2db0ba;
   border-radius: 5px;
   color: white;
-  margin-top: 20px;
+  margin-top: 30px;
   font-size: 20px;
+}
+
+.error_display {
+  margin: 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.error_display img {
+  width: 1000px;
 }

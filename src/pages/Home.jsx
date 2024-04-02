@@ -41,8 +41,10 @@ const Home = ({ search, min, max, sort }) => {
         <img className="img2" src={photo} alt="cover" />
         <img className="img3" src={tear} alt="tear" />
         <div className="bloctri">
-          Prêts à faire du tri dans vos placards ?
-          <button>Commencer à vendre</button>
+          <span>Prêts à faire du tri dans vos placards ?</span>
+          <Link to="/publish">
+            <span style={{ fontSize: "17px" }}>Commencer à vendre</span>
+          </Link>
         </div>
       </div>
       <div className="container">
