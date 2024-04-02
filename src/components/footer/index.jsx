@@ -1,10 +1,10 @@
 // import { Link } from "react-router-dom";
-import tear2 from "/Users/gaetan/LeReacteur/exos/react/Vinted/src/assets/img/tear2.svg";
-import fb from "/Users/gaetan/LeReacteur/exos/react/Vinted/src/assets/img/facebook.svg";
-import ink from "/Users/gaetan/LeReacteur/exos/react/Vinted/src/assets/img/linkedin.svg";
-import ins from "/Users/gaetan/LeReacteur/exos/react/Vinted/src/assets/img/instagram.svg";
-import apps from "/Users/gaetan/LeReacteur/exos/react/Vinted/src/assets/img/fr.svg";
-import goo from "/Users/gaetan/LeReacteur/exos/react/Vinted/src/assets/img/fr2.svg";
+import tear2 from "../../assets/img/tear2.svg";
+import fb from "../../assets/img/facebook.svg";
+import ink from "../../assets/img/linkedin.svg";
+import ins from "../../assets/img/instagram.svg";
+import apps from "../../assets/img/fr.svg";
+import goo from "../../assets/img/fr2.svg";
 import "../footer/Footer.css";
 
 const Footer = () => {
